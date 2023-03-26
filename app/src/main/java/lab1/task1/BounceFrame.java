@@ -1,4 +1,4 @@
-package Lab1.Task2;
+package lab1.task1;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,10 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BounceFrame extends JFrame {
+    private BallCanvas canvas;
     public static final int WIDTH = 450;
     public static final int HEIGHT = 350;
-    public JLabel collectedLabel;
-    private final BallCanvas canvas;
 
     public BounceFrame() {
         this.setSize(WIDTH, HEIGHT);
@@ -23,23 +22,29 @@ public class BounceFrame extends JFrame {
         buttonPanel.setBackground(Color.lightGray);
         JButton buttonStart = new JButton("Start");
         JButton buttonStop = new JButton("Stop");
-        collectedLabel = new JLabel("Collected balls: 0");
-        canvas.setCollectedLabel(collectedLabel);
-        buttonStart.addActionListener(event -> {
+        buttonStart.addActionListener(new ActionListener() {
 
-            Ball b = new Ball(canvas.getPockets(), canvas);
-            canvas.add(b);
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-            BallThread thread = new BallThread(b);
-            thread.start();
-            System.out.println("Thread name = " +
-                    thread.getName());
+                Ball b = new Ball(canvas);
+                canvas.add(b);
 
+                BallThread thread = new BallThread(b);
+                thread.start();
+                System.out.println("Thread name = " +
+                        thread.getName());
+            }
         });
-        buttonStop.addActionListener(event -> System.exit(0));
+        buttonStop.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                System.exit(0);
+            }
+        });
         buttonPanel.add(buttonStart);
         buttonPanel.add(buttonStop);
-        buttonPanel.add(collectedLabel);
 
         content.add(buttonPanel, BorderLayout.SOUTH);
     }

@@ -20,21 +20,14 @@ public class BounceFrame extends JFrame {
         content.add(this.canvas, BorderLayout.CENTER);
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.lightGray);
-        JButton spawnBlue = new JButton("Spawn 100 blue balls");
+        JButton spawn100Blue = new JButton("Spawn 100 blue balls");
+        JButton spawn500Blue = new JButton("Spawn 500 blue balls");
+        JButton spawn1000Blue = new JButton("Spawn 1000 blue balls");
         JButton spawnRed = new JButton("Spawn 1 red ball");
         JButton buttonStop = new JButton("Stop");
-        spawnBlue.addActionListener(e -> {
-
-            for (int i = 0; i < 100; i++) {
-                Ball b = new Ball(canvas, Color.BLUE);
-                canvas.add(b);
-
-                BallThread thread = new BallThread(b, LOW_PRIORITY);
-                thread.start();
-                System.out.println("Thread name = " +
-                        thread.getName());
-            }
-        });
+        spawn100Blue.addActionListener(e -> {spawnBlue(100);});
+        spawn500Blue.addActionListener(e -> {spawnBlue(500);});
+        spawn1000Blue.addActionListener(e -> {spawnBlue(1000);});
         spawnRed.addActionListener(e -> {
 
             Ball b = new Ball(canvas, Color.RED);
@@ -46,10 +39,24 @@ public class BounceFrame extends JFrame {
                     thread.getName());
         });
         buttonStop.addActionListener(e -> System.exit(0));
-        buttonPanel.add(spawnBlue);
+        buttonPanel.add(spawn100Blue);
+        buttonPanel.add(spawn500Blue);
+        buttonPanel.add(spawn1000Blue);
         buttonPanel.add(spawnRed);
         buttonPanel.add(buttonStop);
 
         content.add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    private void spawnBlue(int count) {
+        for (int i = 0; i < count; i++) {
+            Ball b = new Ball(canvas, Color.BLUE);
+            canvas.add(b);
+
+            BallThread thread = new BallThread(b, LOW_PRIORITY);
+            thread.start();
+            System.out.println("Thread name = " +
+                    thread.getName());
+        }
     }
 }

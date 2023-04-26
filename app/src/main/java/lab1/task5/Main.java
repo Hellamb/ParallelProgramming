@@ -11,9 +11,10 @@ public class Main {
 
     private static void unordered() throws InterruptedException {
 
+        Thread verticalThread = new Thread(() -> System.out.print('|'));
+        Thread horizontalThread = new Thread(() -> System.out.print('-'));
+
         for (int i = 0; i < 100; i++) {
-            Thread verticalThread = new Thread(() -> System.out.print('|'));
-            Thread horizontalThread = new Thread(() -> System.out.print('-'));
 
             verticalThread.start();
             horizontalThread.start();
@@ -27,17 +28,18 @@ public class Main {
 
     private static void ordered() throws InterruptedException {
 
-        for (int i = 0; i < 100; i++) {
-            Thread horizontalThread = new Thread(() -> System.out.print('-'));
+        Thread horizontalThread = new Thread(() -> System.out.print('-'));
 
-            Thread verticalThread = new Thread(() -> {
-                try {
-                    horizontalThread.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.print('|');
-            });
+        Thread verticalThread = new Thread(() -> {
+            try {
+                horizontalThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.print('|');
+        });
+
+        for (int i = 0; i < 100; i++) {
 
             horizontalThread.start();
             verticalThread.start();

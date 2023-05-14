@@ -1,18 +1,18 @@
 package lab2;
 
+import java.awt.*;
+
 import static lab2.MatrixFoxMultiplication.foxMultiply;
 import static lab2.MatrixStringMultiplication.stringMultiply;
 import static lab2.SafeMatrix.randomMatrix;
 
 public class Main {
     public static void main(String[] args) {
-//        SafeMatrix m1 = randomMatrix(3,3);
-//        SafeMatrix m2 = randomMatrix(3,3);
-//        SafeMatrix r = foxMultiply(m1, m2, 1, 2);
-//        System.out.println(m1);
-//        System.out.println(m2);
-//        System.out.println(r);
-
+        for (int i = 1; i <= 1024; i*=2) {
+            testBySizeString(i);
+            System.out.println("\n\n------------------------------------------\n\n");
+        }
+        System.out.println("\n\n\n\n\n\n-----------------------------------------------------------\n\n\n\n\n\n");
         for (int i = 1; i <= 1024; i*=2) {
             testBySizeFox(i);
             System.out.println("\n\n------------------------------------------\n\n");

@@ -56,7 +56,7 @@ public class SafeMatrix {
         return matrix[row][col];
     }
 
-    public synchronized void set(int row, int col, int value) {
+    public void set(int row, int col, int value) {
         matrix[row][col] = value;
     }
 

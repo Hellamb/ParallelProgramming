@@ -9,7 +9,7 @@ import static java.util.Arrays.asList;
 
 public class CommonWords {
 
-    public Set<String> search(String... texts) {
+    public static Set<String> searchCommonWords(String... texts) {
         List<List<String>> textWords = Arrays
                 .stream(texts)
                 .map(text -> asList(text.trim().toLowerCase(Locale.ROOT).split("\\s+"))).toList();
@@ -33,7 +33,7 @@ public class CommonWords {
         return foundWords;
     }
 
-    private class FindWord extends RecursiveTask<List<String>> {
+    private static class FindWord extends RecursiveTask<List<String>> {
         private List<String> text1;
         private List<String> text2;
         private int threshold;

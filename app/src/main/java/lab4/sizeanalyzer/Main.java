@@ -1,7 +1,7 @@
 package lab4.sizeanalyzer;
 
-import static lab4.sizeanalyzer.SyncWordLengthAnalyzer.syncAnalyze;
 import static lab4.sizeanalyzer.WordLengthAnalyzer.asyncAnalyze;
+import static lab4.sizeanalyzer.WordLengthAnalyzer.syncAnalyze;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,6 +9,7 @@ public class Main {
 //        System.out.println("Sync: " + result);
 //        var result2 = asyncAnalyze("Hello my dear friend Pedro Hello my dear friend Pedro Hello my dear friend Pedro");
 //        System.out.println("Async: " + result2);
+
         var start = System.nanoTime();
         syncAnalyze(text);
         var end = System.nanoTime();

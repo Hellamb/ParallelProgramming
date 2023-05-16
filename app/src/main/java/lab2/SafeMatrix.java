@@ -15,7 +15,7 @@ public class SafeMatrix {
         int[][] matrix = new int[rowSize][colSize];
         for (int i = 0; i < rowSize; i++) {
             for (int j = 0; j < colSize; j++) {
-                matrix[i][j] = random.nextInt(1000);
+                matrix[i][j] = random.nextInt(10);
             }
         }
         return new SafeMatrix(matrix);

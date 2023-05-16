@@ -1,7 +1,5 @@
 package lab2;
 
-import java.awt.*;
-
 import static lab2.MatrixFoxMultiplication.foxMultiply;
 import static lab2.MatrixStringMultiplication.stringMultiply;
 import static lab2.SafeMatrix.randomMatrix;
